@@ -4,7 +4,7 @@ from mycroft.util.parse import extract_number, extract_numbers
 import logging
 
 def code_validate(utterance):
-    numstr= TotpAutheticate.code_extract(utterance) 
+    numstr= code_extract(utterance) 
     logging.debug('Numstr: '+ numstr)
     return numstr.isnumeric() and (len(numstr) == 6)
 
