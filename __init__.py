@@ -25,15 +25,15 @@ class TotpAutheticate(MycroftSkill):
         elif ret == -1:
             self.speak_dialog('authentication.key.not.configured')
     
-    def code_validate(utterance):
+    def code_validate(self, utterance):
         numstr= self.code_extract(utterance) 
         logging.debug('Numstr: '+ numstr)
         return numstr.isnumeric() and (len(numstr) == 6)
 
-    def code_fail(utterance):
+    def code_fail(self, utterance):
         return MycroftSkill.translate('please.repeat.authentication.code')            
 
-    def code_extract(utterance):       
+    def code_extract(self, utterance):       
         nums = extract_numbers(utterance) 
         numstr = ""
         for number in nums:
@@ -44,7 +44,7 @@ class TotpAutheticate(MycroftSkill):
 
 #    def qrcode_display
         
-    def totp_validate(self,code):
+    def totp_validate(self, code):
         if self.settings.get('totp_key', False):
             return -1
         else:
