@@ -21,7 +21,7 @@ class TotpAutheticate(MycroftSkill):
     
     logging.debug('AuthCode: '.code)
     
-    ret self.totp_validate(code)
+    ret = self.totp_validate(code)
     
     if ret == 1:
        self.speak_dialog('authentication.code.accepted')
