@@ -11,7 +11,7 @@ class TotpAutheticate(MycroftSkill):
 
     @intent_file_handler('authenticate.totp.intent')
     def handle_autheticate_totp(self, message):
-        response_code = self.get_response('Please.read.authentication.code', validator=code_validate(), on_fail=code_fail(), num_retries= 3 )       
+        response_code = self.get_response('Please.read.authentication.code', validator=self.code_validate(), on_fail=self.code_fail(), num_retries= 3 )       
         # ensure number is six digit number as can be read/spoken in multiple ways      
         code = code_extract(response_code)
           
