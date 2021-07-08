@@ -1,4 +1,4 @@
-from mycroft import MycroftSkill, intent_file_handler
+from mycroft import MycroftSkill, intent_file_handler, translate
 import pyotp
 from mycroft.util.parse import extract_number, extract_numbers
 import logging
