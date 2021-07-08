@@ -9,7 +9,7 @@ class TotpAutheticate(MycroftSkill):
     def __init__(self):
         MycroftSkill.__init__(self)
 
-    @intent_file_handler('autheticate.totp.intent')
+    @intent_file_handler('authenticate.totp.intent')
     def handle_autheticate_totp(self, message):
         response_code = self.get_response('Please.read.authentication.code')       
         # ensure number is six digit number as can be read/spoken in multiple ways
