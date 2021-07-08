@@ -25,20 +25,20 @@ class TotpAutheticate(MycroftSkill):
         elif ret == -1:
             self.speak_dialog('authentication.key.not.configured')
     
-def code_validate(utterance):
-    numstr= self.code_extract(utterance) 
-    logging.debug('Numstr: '+ numstr)
-    return numstr.isnumeric() and (len(numstr) == 6)
+    def code_validate(utterance):
+        numstr= self.code_extract(utterance) 
+        logging.debug('Numstr: '+ numstr)
+        return numstr.isnumeric() and (len(numstr) == 6)
 
-def code_fail(utterance):
-    return MycroftSkill.translate('please.repeat.authentication.code')            
+    def code_fail(utterance):
+        return MycroftSkill.translate('please.repeat.authentication.code')            
 
-def code_extract(utterance):       
-    nums = extract_numbers(utterance) 
-    numstr = ""
-    for number in nums:
-        numstr += str(number)
-    return numstr  
+    def code_extract(utterance):       
+        nums = extract_numbers(utterance) 
+        numstr = ""
+        for number in nums:
+            numstr += str(number)
+        return numstr  
     
 #    def totp_generate
 
