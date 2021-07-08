@@ -19,16 +19,16 @@ class TotpAutheticate(MycroftSkill):
             numstr += str(number)
         code = int(numstr)
     
-    logging.debug('AuthCode: '+ code)
+        logging.debug('AuthCode: '+ code)
     
-    ret = self.totp_validate(code)
-    
-    if ret == 1:
-       self.speak_dialog('authentication.code.accepted')
-    elif ret == 0:
-        self.speak_dialog('authentication.code.invalid')
-    elif ret == -1:
-        self.speak_dialog('authentication.key.not.configured')
+        ret = self.totp_validate(code)
+
+        if ret == 1:
+           self.speak_dialog('authentication.code.accepted')
+        elif ret == 0:
+            self.speak_dialog('authentication.code.invalid')
+        elif ret == -1:
+            self.speak_dialog('authentication.key.not.configured')
 
         
 #    def totp_generate
