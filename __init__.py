@@ -35,7 +35,7 @@ class TotpAutheticate(MycroftSkill):
     def code_validate(utterance):
         numstr= self.code_extract(utterance) 
         logging.debug('Numstr: '+ numstr)
-        return numstr.isnumeric() && (len(numstr) == 6)
+        return numstr.isnumeric() and (len(numstr) == 6)
  
     def code_fail(utterance):
         return translate('please.repeat.authentication.code')
