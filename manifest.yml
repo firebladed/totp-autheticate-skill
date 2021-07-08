@@ -28,5 +28,5 @@
 #   skill:
 #     - my-other-skill
 
-python
+python:
   - pyotp
