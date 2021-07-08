@@ -28,5 +28,6 @@
 #   skill:
 #     - my-other-skill
 
-python:
-  - pyotp
+dependencies:
+  python:
+    - pyotp
