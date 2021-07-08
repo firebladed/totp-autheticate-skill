@@ -1,4 +1,4 @@
-from mycroft import MycroftSkill, intent_file_handler, translate
+from mycroft import MycroftSkill, intent_file_handler
 import pyotp
 from mycroft.util.parse import extract_number, extract_numbers
 import logging
@@ -9,7 +9,7 @@ def code_validate(utterance):
     return numstr.isnumeric() and (len(numstr) == 6)
 
 def code_fail(utterance):
-    return translate('please.repeat.authentication.code')            
+    return MycroftSkill.translate('please.repeat.authentication.code')            
 
 def code_extract(utterance):       
     nums = extract_numbers(utterance) 
