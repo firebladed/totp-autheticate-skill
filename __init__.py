@@ -25,9 +25,9 @@ class TotpAutheticate(MycroftSkill):
     
     if ret == 1:
        self.speak_dialog('authentication.code.accepted')
-    elif ret == 0
+    elif ret == 0:
         self.speak_dialog('authentication.code.invalid')
-    elif ret == -1
+    elif ret == -1:
         self.speak_dialog('authentication.key.not.configured')
 
         
@@ -38,7 +38,7 @@ class TotpAutheticate(MycroftSkill):
     def totp_validate(self,code):
         if self.settings.get('totp_key', False):
             return -1
-        else
+        else:
             key = self.settings.get('totp_key')
             totp = pyotp.TOTP(key)
             if totp.verify(code):
