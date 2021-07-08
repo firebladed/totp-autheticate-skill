@@ -16,10 +16,10 @@ class TotpAutheticate(MycroftSkill):
         nums = extract_numbers(response_code) 
         numstr = ""
         for number in nums:
-            numstr = str(number)
+            numstr += str(number)
         code = int(numstr)
     
-    logging.debug('AuthCode: '.code)
+    logging.debug('AuthCode: '+ code)
     
     ret = self.totp_validate(code)
     
