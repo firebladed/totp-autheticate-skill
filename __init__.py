@@ -3,20 +3,7 @@ import pyotp
 from mycroft.util.parse import extract_number, extract_numbers
 import logging
 
-def code_validate(utterance):
-    numstr= code_extract(utterance) 
-    logging.debug('Numstr: '+ numstr)
-    return numstr.isnumeric() and (len(numstr) == 6)
-
-def code_fail(utterance):
-    return MycroftSkill.translate('please.repeat.authentication.code')            
-
-def code_extract(utterance):       
-    nums = extract_numbers(utterance) 
-    numstr = ""
-    for number in nums:
-        numstr += str(number)
-    return numstr      
+    
 
 class TotpAutheticate(MycroftSkill):
     def __init__(self):
@@ -24,7 +11,7 @@ class TotpAutheticate(MycroftSkill):
 
     @intent_file_handler('authenticate.totp.intent')
     def handle_autheticate_totp(self, message):
-        response_code = self.get_response('Please.read.authentication.code', validator=code_validate, on_fail=code_fail, num_retries= 3 )       
+        response_code = self.get_response('Please.read.authentication.code', validator=self.code_validate, on_fail=self.code_fail, num_retries= 3 )       
         # ensure number is six digit number as can be read/spoken in multiple ways      
         code = code_extract(response_code)
           
@@ -38,7 +25,21 @@ class TotpAutheticate(MycroftSkill):
         elif ret == -1:
             self.speak_dialog('authentication.key.not.configured')
     
+def code_validate(utterance):
+    numstr= self.code_extract(utterance) 
+    logging.debug('Numstr: '+ numstr)
+    return numstr.isnumeric() and (len(numstr) == 6)
 
+def code_fail(utterance):
+    return MycroftSkill.translate('please.repeat.authentication.code')            
+
+def code_extract(utterance):       
+    nums = extract_numbers(utterance) 
+    numstr = ""
+    for number in nums:
+        numstr += str(number)
+    return numstr  
+    
 #    def totp_generate
 
 #    def qrcode_display
