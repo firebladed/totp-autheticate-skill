@@ -15,7 +15,7 @@ class TotpAutheticate(MycroftSkill):
         # ensure number is six digit number as can be read/spoken in multiple ways
         nums = extract_numbers(response_code) 
         numstr = ""
-        for number in nums
+        for number in nums:
             numstr = str(number)
         code = int(numstr)
     
