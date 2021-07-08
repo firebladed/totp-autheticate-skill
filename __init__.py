@@ -25,9 +25,9 @@ class TotpAutheticate(MycroftSkill):
     
     if ret == 1:
        self.speak_dialog('authentication.code.accepted')
-    else if ret == 0
+    elif ret == 0
         self.speak_dialog('authentication.code.invalid')
-    else if ret == -1
+    elif ret == -1
         self.speak_dialog('authentication.key.not.configured')
 
         
