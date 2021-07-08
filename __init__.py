@@ -13,7 +13,7 @@ class TotpAutheticate(MycroftSkill):
     def handle_autheticate_totp(self, message):
         response_code = self.get_response('Please.read.authentication.code', validator=code_validate, on_fail=code_fail, num_retries= 3 )       
         # ensure number is six digit number as can be read/spoken in multiple ways      
-        code = code_extract(response_code): 
+        code = code_extract(response_code)
           
     
         ret = self.totp_validate(code)
