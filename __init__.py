@@ -3,7 +3,7 @@ import pyotp
 from mycroft.util.parse import extract_number, extract_numbers
 import logging
 
-    
+
 
 class TotpAutheticate(MycroftSkill):
     def __init__(self):
@@ -27,17 +27,18 @@ class TotpAutheticate(MycroftSkill):
     
     def code_validate(self, utterance):
         numstr= self.code_extract(utterance) 
-        logging.debug('Numstr: '+ numstr)
+        self.log.debug('Numstr: '+ numstr)
         return numstr.isnumeric() and (len(numstr) == 6)
 
     def code_fail(self, utterance):
-        return self.translate('please.repeat.authentication.code')            
+        return self.translate('please.repeat.authentication.code')
 
     def code_extract(self, utterance):       
+        self.log.debug(utterance)
         nums = extract_numbers(utterance) 
         numstr = ""
         for number in nums:
-            numstr += str(number)
+            numstr += str(int(number))
         return numstr  
     
 #    def totp_generate
