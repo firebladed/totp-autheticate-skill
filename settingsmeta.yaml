@@ -1,10 +1,8 @@
-
 skillMetadata:
   sections:
     - name: TOTP Key
       fields:
         - name: totp_key
-          type: text
+          type: password
           label: TOTP Key
           value: ""
-
